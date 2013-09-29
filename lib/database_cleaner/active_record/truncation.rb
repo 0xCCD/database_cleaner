@@ -122,6 +122,7 @@ module DatabaseCleaner
       end
     end
 
+=begin
     module PostgreSQLAdapter
       def db_version
         @db_version ||= postgresql_version
@@ -164,6 +165,7 @@ module DatabaseCleaner
         select_value("SELECT true FROM #{table} LIMIT 1;")
       end
     end
+=end
 
     module OracleEnhancedAdapter
       def truncate_table(table_name)
@@ -203,7 +205,7 @@ module ActiveRecord
     MYSQL_ADAPTER_PARENT.class_eval     { include ::DatabaseCleaner::ActiveRecord::MysqlAdapter }
     MYSQL2_ADAPTER_PARENT.class_eval    { include ::DatabaseCleaner::ActiveRecord::MysqlAdapter }
     SQLITE_ADAPTER_PARENT.class_eval    { include ::DatabaseCleaner::ActiveRecord::SQLiteAdapter }
-    POSTGRES_ADAPTER_PARENT.class_eval  { include ::DatabaseCleaner::ActiveRecord::PostgreSQLAdapter }
+    # POSTGRES_ADAPTER_PARENT.class_eval  { include ::DatabaseCleaner::ActiveRecord::PostgreSQLAdapter }
 
     class IBM_DBAdapter < AbstractAdapter
       include ::DatabaseCleaner::ActiveRecord::IBM_DBAdapter
